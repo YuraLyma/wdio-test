@@ -5,13 +5,11 @@ on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main", "my-test-branch" ]
 
 jobs:
   first_job:
     name: run_tests
-    runs-on:  ununtu-latest
+    runs-on: windows-latest
     
     steps:
     - name: git clone
