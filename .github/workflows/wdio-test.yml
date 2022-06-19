@@ -10,15 +10,18 @@ on:
 
 jobs:
   first_job:
-    name: run tests
+    name: run_tests
     runs-on:  ununtu-latest
     strategy:
       matrix:
         node_version: ['16']
     
     steps:
-    - uses: actions/checkout@v1
-    - name: Use Node {{ matrix.node_version }}
+    - name: git clone
+      uses: actions/checkout@v1
+      with:
+        node-version: '16.14.2'
+        
     - name: npm install and run tests
       run:  |
           npm install
