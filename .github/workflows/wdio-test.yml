@@ -1,0 +1,26 @@
+name: WebdriverIO-tests
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main", "my-test-branch" ]
+
+jobs:
+  first_job:
+    name: run tests
+    runs-on:  ununtu-latest
+    strategy:
+      matrix:
+        node_version: ['16']
+    
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node {{ matrix.node_version }}
+    - name: npm install and run tests
+      run:  |
+          npm install
+          npm run wdio
+    
